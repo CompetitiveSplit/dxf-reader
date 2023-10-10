@@ -3,7 +3,7 @@ import ezdxf
 import math
 
 try:
-    my_file = ezdxf.readfile("testreader.dxf")
+    my_file = ezdxf.readfile("test.dxf")
     msp = my_file.modelspace()
     total_length = 0
     def get_lenght(start, end):
