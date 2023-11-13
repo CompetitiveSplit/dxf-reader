@@ -5,7 +5,6 @@ import os
 from tkinter import Tk, Label, Button, filedialog, Entry, messagebox, ttk
 from tkinter.scrolledtext import ScrolledText
 
-<<<<<<< HEAD
 try:
     my_file = ezdxf.readfile("test.dxf")
     msp = my_file.modelspace()
@@ -18,7 +17,7 @@ try:
         global total_length
         total_length += get_lenght(e.dxf.start, e.dxf.end)[0]
         print("lenght: %s\n" % str(get_lenght(e.dxf.start, e.dxf.end)))
-=======
+
 class DXFAnalyzer:
     def __init__(self, root):
         self.root = root
@@ -29,12 +28,10 @@ class DXFAnalyzer:
 
         self.label = Label(root, text="Archivo DXF:")
         self.label.grid(row=0, column=0, padx=10, pady=10, sticky="w")
->>>>>>> b33e75b (interfaz de usuario añadida)
 
         self.entry = Entry(root, width=40)
         self.entry.grid(row=0, column=1, padx=10, pady=10, sticky="w")
 
-<<<<<<< HEAD
     print("Total length: ", total_length)
 
 except IOError:
@@ -44,7 +41,7 @@ except ezdxf.DXFStructureError:
     print(f"Invalid or corrupted DXF file.")
     sys.exit(2)
 
-=======
+
         self.browse_button = Button(root, text="Buscar DXF", command=self.browse_dxf)
         self.browse_button.grid(row=0, column=2, padx=10, pady=10, sticky="w")
 
@@ -116,4 +113,4 @@ if __name__ == "__main__":
     root = Tk()
     app = DXFAnalyzer(root)
     root.mainloop()
->>>>>>> b33e75b (interfaz de usuario añadida)
+
