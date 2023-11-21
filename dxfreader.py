@@ -60,11 +60,10 @@ class DXFAnalyzer:
             for item in self.tree.get_children():
                 self.tree.delete(item)
 
-            def get_length(start, end):
-                return math.dist(start, end)
-
             for i, e in enumerate(msp.query("LINE")):
-                self.print_entity(e, i + 1, total_length)
+                length = self.get_length(e.dxf.start, e.dxf.end)
+                total_length += length
+                self.print_entity(e, i + 1, length)
 
             self.total_length_label.config(text=f"Longitud total: {total_length}")
 
@@ -73,14 +72,14 @@ class DXFAnalyzer:
         except ezdxf.DXFStructureError:
             messagebox.showerror("Error", "Archivo DXF inválido o corrupto.")
 
-    def print_entity(self, e, index, total_length):
-        total_length += self.get_length(e.dxf.start, e.dxf.end)
-
+    def print_entity(self, e, index, length):
         start_x, start_y = e.dxf.start.x, e.dxf.start.y
         end_x, end_y = e.dxf.end.x, e.dxf.end.y
-        length = self.get_length(e.dxf.start, e.dxf.end)
 
         self.tree.insert("", "end", text=index, values=(start_x, start_y, end_x, end_y, length))
+
+    def get_length(self, start, end):
+        return math.sqrt((end.x - start.x)**2 + (end.y - start.y)**2)
 
     @staticmethod
     def get_length(start, end):
