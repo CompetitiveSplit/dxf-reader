@@ -81,9 +81,6 @@ class DXFAnalyzer:
     def get_length(self, start, end):
         return math.sqrt((end.x - start.x)**2 + (end.y - start.y)**2)
 
-    @staticmethod
-    def get_length(start, end):
-        return math.dist(start, end)
 
 if __name__ == "__main__":
     root = Tk()
